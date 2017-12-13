@@ -107,7 +107,7 @@ main {
 									<th>${file.fileSize}</th>
 									<th>${file.fileType}</th>
 									<th>
-									<button class="ui primary button" onclick="location.href='/project/download?file=${file.fullFileName}'">Download</button>
+									<button class="ui primary button" onclick="location.href='/project/download?file=${file.fileUid}'">Download</button>
 									</th>
 									<th>
 									<button class="ui button" onclick="#">Delete</button>

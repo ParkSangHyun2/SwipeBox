@@ -1,6 +1,7 @@
 package com.sh.project.controller;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,22 +9,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sh.project.dao.UserFileDAO;
 import com.sh.project.service.FileListService;
-import com.sh.project.vo.PersonalFile;
+import com.sh.project.userfiles.FileManagementService;
 
 @Controller
 public class ListController {
-
+	//
+	private FileManagementService dbFileStore;
+	
+	public ListController() {
+		try {
+			dbFileStore = new FileManagementService();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	@RequestMapping("/list")
 	public ModelAndView viewList(HttpSession session) {
 		//
-		
+		String userId = (String) session.getAttribute("s_id");
 		FileListService fileListService = new FileListService();
-		ArrayList<PersonalFile> userList = (ArrayList<PersonalFile>) fileListService.getUserFileList();
+		//ArrayList<PersonalFile> userList = (ArrayList<PersonalFile>) fileListService.getUserFileList();
+		Collection<UserFileDAO> userList = null;
+		try {
+			userList = dbFileStore.selectAll(userId);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(userList.isEmpty()) {
 			System.out.println("empty List");
 		}else {
-			System.out.println("no empty" + userList.iterator().next().getFileName());
+			//System.out.println("no empty" + userList.iterator().next().getFileName());
 		}
 		
 		ModelAndView mav = new ModelAndView("fileList");

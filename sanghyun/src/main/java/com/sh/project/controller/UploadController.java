@@ -36,9 +36,10 @@ public class UploadController {
      
     @RequestMapping(value = "/fileUpload/post", method = RequestMethod.POST)
     @ResponseBody
-    public String upload(MultipartHttpServletRequest multipartRequest) { 
+    public String upload(MultipartHttpServletRequest multipartRequest, HttpSession session) { 
     		//
-    		FileStorageService uploadservice = new FileStorageService(multipartRequest);
+    		String userId = (String) session.getAttribute("s_id");
+    		FileStorageService uploadservice = new FileStorageService(multipartRequest,userId);
     		uploadservice.uploadFiles();
           return "fileUpload";
         //return "success";

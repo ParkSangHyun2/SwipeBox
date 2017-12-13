@@ -40,8 +40,8 @@ public class MybatisTest {
 	public void select() {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			UserFile file = new UserFile("pus5684", "test");
-			UserFile foundFile = session.selectOne("FileMapper.selectFile", file);
+			UserFileDAO file = new UserFileDAO("pus5684", "test");
+			UserFileDAO foundFile = session.selectOne("FileMapper.selectFile", file);
 			System.out.println(foundFile);
 		} finally {
 			session.close();
@@ -55,8 +55,8 @@ public class MybatisTest {
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
 		try {
-			UserFile file = new UserFile("20171213131121", "pus5684", "test", "1 MB", "txt", sqlDate);
-			UserFile userFile = session.selectOne("FileMapper.insertFile", file);
+			UserFileDAO file = new UserFileDAO("20171213131121", "pus5684", "test", "1 MB", "txt", sqlDate);
+			UserFileDAO userFile = session.selectOne("FileMapper.insertFile", file);
 			System.out.println(userFile);
 		} finally {
 			session.close();
@@ -68,7 +68,7 @@ public class MybatisTest {
 		SqlSession session = sqlSessionFactory.openSession();
 
 		try {
-			UserFile file = new UserFile("pus5684", "test");
+			UserFileDAO file = new UserFileDAO("pus5684", "test");
 			int userFile = session.delete("FileMapper.deleteFile", file);
 			session.commit();
 			System.out.println(userFile);
