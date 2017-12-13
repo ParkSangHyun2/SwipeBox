@@ -110,7 +110,7 @@ main {
 									<button class="ui primary button" onclick="location.href='/project/download?file=${file.fileUid}'">Download</button>
 									</th>
 									<th>
-									<button class="ui button" onclick="#">Delete</button>
+									<button class="ui button" onclick="location.href='/project/delete?file=${file.fileUid}'">Delete</button>
 									</th>
 								</tr>
 							</c:forEach>

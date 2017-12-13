@@ -14,12 +14,12 @@ import org.slf4j.LoggerFactory;
 import com.sh.project.dao.UserFileDAO;
 import com.sh.project.dao.UserFileDAO;
 
-public class FileManagementService {
+public class DataManagementService {
 	
-	private static final Logger log = LoggerFactory.getLogger(FileManagementService.class);
+	private static final Logger log = LoggerFactory.getLogger(DataManagementService.class);
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public FileManagementService() throws Exception {
+	public DataManagementService() throws Exception {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);

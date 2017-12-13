@@ -7,23 +7,25 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.sh.project.dao.UserFileDAO;
-import com.sh.project.userfiles.FileManagementService;
+import com.sh.project.userfiles.DataManagementService;
 
 public class FileStorageService {
 	//
 	private MultipartHttpServletRequest multipartRequest;
 	private Iterator<String> itr;
-	private FileManagementService dbFileStore;
+	private DataManagementService dbFileStore;
 	private String userId;
 
 	private final String filePath = "/Users/parksanghyun/files";// 디렉터리 수정해야
+	
+	public FileStorageService() {}
 
 	public FileStorageService(MultipartHttpServletRequest multipartRequest, String userId) {
 		this.multipartRequest = multipartRequest;
 		this.itr = multipartRequest.getFileNames();
 		this.userId = userId;
 		try {
-			dbFileStore = new FileManagementService();
+			dbFileStore = new DataManagementService();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,6 +76,12 @@ public class FileStorageService {
 		}
 	}
 
+	public void deleteFile(String fileUid) {
+		//
+		File deleteFile = new File(filePath + "/" + fileUid);
+		deleteFile.delete();
+	}
+
 	private String setSizeFormat(long fileSize) {
 		//
 		if (fileSize > 1024 && fileSize < 1048576) {
@@ -85,9 +93,5 @@ public class FileStorageService {
 		} else {
 			return fileSize + " Byte";
 		}
-	}
-
-	public void downloadFile() {
-		//
 	}
 }

@@ -11,16 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sh.project.dao.UserFileDAO;
 import com.sh.project.service.FileListService;
-import com.sh.project.userfiles.FileManagementService;
+import com.sh.project.userfiles.DataManagementService;
 
 @Controller
 public class ListController {
 	//
-	private FileManagementService dbFileStore;
+	private DataManagementService dbFileStore;
 	
 	public ListController() {
 		try {
-			dbFileStore = new FileManagementService();
+			dbFileStore = new DataManagementService();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

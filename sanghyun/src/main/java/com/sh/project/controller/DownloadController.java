@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.project.dao.UserFileDAO;
-import com.sh.project.userfiles.FileManagementService;
+import com.sh.project.userfiles.DataManagementService;
 
 @Controller
 public class DownloadController {
@@ -22,13 +22,13 @@ public class DownloadController {
 	private String filePath = "/Users/parksanghyun/files/";
 	private String fileName = "test999.txt";
 	
-	private FileManagementService dbFileStore;
+	private DataManagementService dbFileStore;
 	private OutputStream outs = null;
 	private FileInputStream fis = null;
 	
 	public DownloadController() {
 		try {
-			dbFileStore = new FileManagementService();
+			dbFileStore = new DataManagementService();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
