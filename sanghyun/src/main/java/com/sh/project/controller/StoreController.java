@@ -44,6 +44,7 @@ public class StoreController {
 		dbFileStore.delete(userId, fileName);	
 		fileStorageService.deleteFile(fileUid);
 		
-		return "fileList";
+		
+		return "redirect:list";
 	}
 }
