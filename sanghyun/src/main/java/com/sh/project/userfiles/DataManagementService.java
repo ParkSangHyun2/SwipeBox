@@ -67,7 +67,9 @@ public class DataManagementService {
 	public void insert(UserFileDAO insertFile) {
 		SqlSession session = sqlSessionFactory.openSession();
 		java.util.Date utilDate = new java.util.Date();
+		System.out.println("INSERT TIME : "+utilDate);
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		System.out.println("SQL TIME : "+utilDate);
 		insertFile.setRegDate(sqlDate);
 
 		try {

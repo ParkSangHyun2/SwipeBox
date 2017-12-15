@@ -27,7 +27,7 @@
 	<insert id="insertFile">
 		INSERT INTO userfile
 		VALUES (#{fileUid}, #{userId}, #{fileName}, #{fileSize}, #{fileType},
-		#{regDate})
+		now())
 	</insert>
 
 	<delete id="deleteFile" parameterType="String">

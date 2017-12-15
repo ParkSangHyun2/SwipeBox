@@ -23,20 +23,4 @@
 		FROM member
 		WHERE id= #{id}
 	</select>
-
-	<!-- <select id="login2" resultType="loginDTO" parameterType="loginDTO"> 
-		SELECT coid, mlevel FROM coMember WHERE coid = #{id} AND passwd = #{passwd} 
-		</select> <select id="adminlogin" resultType="loginDTO" parameterType="loginDTO"> 
-		SELECT coid, mlevel FROM coMember WHERE coid = #{coid} AND passwd = #{passwd} 
-		AND mlevel in ('0','1') </select> <select id="adminFindId" resultType="loginDTO" 
-		parameterType="loginDTO"> SELECT coid FROM coMember WHERE coNum = #{coNum} 
-		AND name = #{name} </select> <select id="adminFindPw" resultType="loginDTO" 
-		parameterType="loginDTO"> SELECT passwd FROM coMember WHERE coid = #{coid} 
-		AND coNum = #{coNum} AND name = #{name} </select> <select id="findId" resultType="loginDTO" 
-		parameterType="loginDTO"> SELECT id FROM pnMember WHERE email = #{email} 
-		AND name = #{name} </select> <select id="findPw" resultType="loginDTO" parameterType="loginDTO"> 
-		SELECT passwd FROM pnMember WHERE id = #{id} AND email = #{email} AND name 
-		= #{name} </select> -->
-
-
 </mapper>
