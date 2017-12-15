@@ -11,7 +11,7 @@ public class LoginDAO {
 	SqlSession sqlSession;
 	
 	public LoginDAO() {
-		System.out.println("---------loginDAO() ∞¥√º ª˝º∫µ ");
+		System.out.println("---------loginDAO() ÏÉùÏÑ±ÏôÑÎ£å");
 	}
 	
 	public LoginDTO login1(LoginDTO dto) {	
@@ -22,12 +22,24 @@ public class LoginDAO {
 		return dto1;
 	}
 	
-	public int create(LoginDTO dto){
-		
+	public int create(LoginDTO dto){	
 		LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
 		int cnt=0;
 		cnt = mapper.create(dto);
 		
 		return cnt;
 	}
+	
+	public int idcheck(LoginDTO dto){	
+		LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+		int cnt=1;
+		System.out.println("DAO  "+ dto.getId());
+		cnt = mapper.idcheck(dto);
+		
+		return cnt;
+	}
+	
+
+	
+	
 }
