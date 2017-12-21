@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sh</groupId>
 	<artifactId>project</artifactId>
-	<name>sanghyun</name>
+	<name>SwipeBox</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>

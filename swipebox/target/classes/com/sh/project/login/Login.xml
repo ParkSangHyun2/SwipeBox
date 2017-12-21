@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 인터페이스가 와야함. interface LoginMapper{} -->
+<mapper namespace="com.sh.project.login.LoginMapper">
+
+
+	<select id="login1" resultType="LoginDTO" parameterType="LoginDTO">
+		SELECT id
+		FROM member
+		WHERE id = #{id} AND passwd = #{passwd}
+	</select>
+
+	<insert id="create" parameterType="LoginDTO">
+		INSERT INTO member (id, passwd, name, tel, email, regDate)
+		VALUES (#{id}, #{passwd}, #{name}, #{tel}, #{email}, now())
+	</insert>
+
+	<select id="idcheck" resultType="int" parameterType="LoginDTO">
+		SELECT COUNT(*)
+		FROM member
+		WHERE id= #{id}
+	</select>
+
+	<!-- <select id="login2" resultType="loginDTO" parameterType="loginDTO"> 
+		SELECT coid, mlevel FROM coMember WHERE coid = #{id} AND passwd = #{passwd} 
+		</select> <select id="adminlogin" resultType="loginDTO" parameterType="loginDTO"> 
+		SELECT coid, mlevel FROM coMember WHERE coid = #{coid} AND passwd = #{passwd} 
+		AND mlevel in ('0','1') </select> <select id="adminFindId" resultType="loginDTO" 
+		parameterType="loginDTO"> SELECT coid FROM coMember WHERE coNum = #{coNum} 
+		AND name = #{name} </select> <select id="adminFindPw" resultType="loginDTO" 
+		parameterType="loginDTO"> SELECT passwd FROM coMember WHERE coid = #{coid} 
+		AND coNum = #{coNum} AND name = #{name} </select> <select id="findId" resultType="loginDTO" 
+		parameterType="loginDTO"> SELECT id FROM pnMember WHERE email = #{email} 
+		AND name = #{name} </select> <select id="findPw" resultType="loginDTO" parameterType="loginDTO"> 
+		SELECT passwd FROM pnMember WHERE id = #{id} AND email = #{email} AND name 
+		= #{name} </select> -->
+
+
+</mapper>

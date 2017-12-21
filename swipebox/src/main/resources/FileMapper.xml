@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FileMapper">
+	<select id="selectAll" resultType="hashmap">
+		SELECT *
+		FROM userfile
+		WHERE userId = #{userId}
+		<!-- where id = #{id} -->
+	</select>
+
+	<select id="selectFile" parameterType="com.sh.project.dao.UserFileDAO"
+							resultType="com.sh.project.dao.UserFileDAO">
+		SELECT *
+		FROM userfile
+		WHERE userId = #{userId} AND fileName = #{fileName}
+	</select>
+
+	<select id="selectByUid" parameterType="com.sh.project.dao.UserFileDAO"
+							resultType="com.sh.project.dao.UserFileDAO">
+		SELECT *
+		FROM userfile
+		WHERE fileUid = #{fileUid}
+	</select>
+
+	<insert id="insertFile">
+		INSERT INTO userfile
+		VALUES (#{fileUid}, #{userId}, #{fileName}, #{fileSize}, #{fileType},
+		now())
+	</insert>
+
+	<delete id="deleteFile" parameterType="String">
+		DELETE
+		FROM userfile
+		WHERE (userId = #{userId} AND fileName = #{fileName})
+	</delete>
+
+</mapper>
